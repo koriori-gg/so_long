@@ -7,9 +7,7 @@
 //     mlx_loop(mlx);
 // }
 
-#include "../include/so_long.h"
-#include "../minilibx-linux/mlx_int.h"
-#include "../minilibx-linux/mlx.h"
+#include "so_long.h"
 
 int main()
 {

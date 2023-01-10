@@ -15,7 +15,7 @@ SRC = src/so_long.c
 OBJ = $(SRC:.c=.o)
 
 CC = gcc
-CFLAGS = -L/usr/X11R6/lib -lX11 -lXext -framework OpenGL -framework AppKit
+CFLAGS = -L/usr/X11R6/lib -lX11 -lXext -framework OpenGL -framework AppKit -I minilibx-linux -I include -I libft/include
 
 all: $(NAME)
 
