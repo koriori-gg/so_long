@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 14:47:05 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/21 14:49:49 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:31:51 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	backtracking(t_map *map, int i)
 }
 
 
-void	able_to_goal(t_map *map, t_index *index)
+void	able_to_goal(t_base *data)
 {
 	char	*str;
 	t_map	*dup;
@@ -72,18 +72,18 @@ void	able_to_goal(t_map *map, t_index *index)
 	size_t	i;
 
 
-	dup = mapdup(map);
+	dup = mapdup(data->map);
 	test = dup;
 	i = 0;
 	while (dup != NULL)
 	{
-		if (i == index->y)
+		if (i == data->index.y)
 			break;
 		i++;
 		dup = dup->next;
 	}
-	backtracking(dup, index->x);
+	backtracking(dup, data->index.x);
 	print_map(test);
-	contains_unnecessary(dup, "01P\n");//CE->1
-	free(dup);//TODO: 関数にする必要あり？？
+	contains_unnecessary2(data, dup, "01P\n");//CE->1//error reason
+	ft_free_map(dup);//TODO: 関数にする必要あり？？
 }

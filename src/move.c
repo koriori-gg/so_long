@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:18:44 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/24 22:14:51 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/26 00:20:19 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,21 @@ void	move_down(t_map *map, t_index *index, t_count *counts)
 		i++;
 	}
 	dst = ptr->next;
-	if(dst->row[index->x] == '0')
+	if (ft_strchr("0CE", dst->row[index->x]))
 	{
+		if (counts->status == INCOMPLETE && dst->row[index->x] == 'E')
+			return ;
+		if (counts->status == COMPLETE && dst->row[index->x] == 'E')
+			counts->play = FINISH;
+		if (dst->row[index->x] == 'C')
+			counts->current += 1;
 		dst->row[index->x] = 'P';
 		ptr->row[index->x] = '0';
 		index->y += 1;
 		counts->walk += 1;
 		counts->move = MOVE;
+
 	}
-	else if (dst->row[index->x] == 'C')
-	{
-		dst->row[index->x] = 'P';
-		ptr->row[index->x] = '0';
-		index->y += 1;
-		counts->current += 1;
-		counts->walk += 1;
-		counts->move = MOVE;
-	}
-	// else if (dst->row[index->y] == 'E')
-	//TODO: strchrにしてちっさい違いだけifにする
 }
 
 void	move_up(t_map *map, t_index *index, t_count *counts)
@@ -83,7 +79,16 @@ void	move_up(t_map *map, t_index *index, t_count *counts)
 		counts->walk += 1;
 		counts->move = MOVE;
 	}
-	// else if (dst->row[index->y] == 'E')
+	else if (counts->status == COMPLETE && dst->row[index->x] == 'E')
+	{
+		dst->row[index->x] = 'P';
+		ptr->row[index->x] = '0';
+		index->y -= 1;
+		counts->current +=1;	
+		counts->walk += 1;
+		counts->move = MOVE;
+		counts->play = FINISH;
+	}
 }
 
 void	move_right(t_map *map, t_index *index, t_count *counts)
@@ -117,7 +122,16 @@ void	move_right(t_map *map, t_index *index, t_count *counts)
 		counts->walk += 1;
 		counts->move = MOVE;
 	}
-	// else if (ptr->row[data->index.x + 1] == 'E')
+	else if (counts->status == COMPLETE && ptr->row[index->x + 1] == 'E')
+	{
+		ptr->row[index->x + 1] = 'P';
+		ptr->row[index->x] = '0';
+		index->x += 1;
+		counts->current += 1;
+		counts->walk += 1;
+		counts->move = MOVE;
+		counts->play = FINISH;
+	}
 
 }
 
@@ -168,10 +182,7 @@ int	input_key(int keycode, t_base *data)
 {
 	//printf("%d\n", keycode);
 	if (keycode == KEY_ESC)
-	{
-		mlx_destroy_window(data->mlx, data->win);
-		exit(0);
-	}
+		end_game(data);
 	else if (keycode == KEY_UP || keycode == KEY_W)
 	{
 		printf("up\n");

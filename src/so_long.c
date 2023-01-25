@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:18:28 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/24 21:46:17 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:47:17 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,16 @@ void	iscomplete(t_count *counts)
 		counts->status = COMPLETE;
 }
 
+void	isgoal(t_base *data)
+{
+	if (data->counts.play == FINISH)
+		end_game(data);
+}
 int	main_loop(t_base *data)
 {
 	iscomplete(&data->counts);
 	draw_map(data);
+	isgoal(data);
 	return (0);
 }
 

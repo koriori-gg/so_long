@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:19:22 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/25 14:47:24 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:44:35 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,10 +119,17 @@ void	isvalid_map(t_base *data);
 //step
 void	print_step(t_count *counts);
 //valid
-void	contains_unnecessary(t_map *map, char *chars);
+void	contains_unnecessary(t_base *data, char *chars);
 //goal
-void	able_to_goal(t_map *map, t_index *index);
+void	able_to_goal(t_base *data);
 //close
 void	error(t_base *data);
+void	end_game(t_base *data);
+//free
+void	ft_free_data(t_base *data);
+void	ft_free_map(t_map *map);
+
+//temp
+void	contains_unnecessary2(t_base *data, t_map *dup, char *chars);
 
 #endif

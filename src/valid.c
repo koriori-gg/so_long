@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 14:47:15 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/25 14:46:55 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:31:21 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,14 @@ size_t	strcount(char *str, char c)
 	}
 	return (count);
 }
-void	contains_char(t_map *map, t_count *counts)
+void	contains_char(t_base *data)
 {
+	t_map	*map;
 	size_t	start;
 	size_t	exit;
 	size_t	collect;
 
+	map = data->map;
 	start = 0;
 	exit = 0;
 	collect = 0;
@@ -51,29 +53,32 @@ void	contains_char(t_map *map, t_count *counts)
 		map = map->next;
 	}
 	if (start != 1 || exit != 1 || collect < 1)
-		error();
-	counts->collect = collect;
+		error(data);
+	data->counts.collect = collect;
 }
 
-void	isrectangle(t_map *map)
+void	isrectangle(t_base *data)
 {
+	t_map	*map;
 	size_t	len;
 
+	map = data->map;
 	len = ft_strlen(map->row);
 	while (map != NULL)
 	{	
 		if (len != ft_strlen(map->row) || len == 0)
-			error();
+			error(data);
 		map = map->next;
 	}
 }
 
-void	contains_unnecessary(t_map *map, char *chars)
+void	contains_unnecessary(t_base *data, char *chars)
 {
+	t_map	*map;
 	size_t	i;
 	char	*str;
 
-
+	map = data->map;
 	while (map != NULL)
 	{
 		i = 0;
@@ -81,33 +86,64 @@ void	contains_unnecessary(t_map *map, char *chars)
 		while (str[i])
 		{
 			if (ft_strchr(chars, str[i]) == NULL)
-				error();
+				error(data);
 			i++;
 		}
 		map = map->next;
 	}
-
 }
-void	issurrounded(t_map *map, int map_height, int map_width)
-{
-	int	i;
-	int	j;
 
+void	contains_unnecessary2(t_base *data, t_map *dup, char *chars)
+{
+	t_map	*map;
+	size_t	i;
+	char	*str;
+
+	map = dup;
+	while (map != NULL)
+	{
+		i = 0;
+		str = map->row;
+		while (str[i])
+		{
+			if (ft_strchr(chars, str[i]) == NULL)
+			{
+				ft_free_map(dup);
+				error(data);
+			}
+
+			i++;
+		}
+		map = map->next;
+	}
+}
+
+void	issurrounded(t_base *data)
+{
+	t_map	*map;
+	int		height;
+	int		width;
+	int		i;
+	int		j;
+
+	map = data->map;
+	height = data->image_height;
+	width = data->image_width;
 	i = 0;
 	while (map != NULL)
 	{
 		j = 0;
 		while (map->row[j] != '\n')
 		{
-			if (i == 0 || i + 1 == map_height)
+			if (i == 0 || i + 1 == height)
 			{
 				if (map->row[j] != '1')
-					error();
+					error(data);
 			}
 			else
 			{
-				if((j == 0 || j + 1 == map_width) &&  map->row[j] != '1')
-					error();
+				if((j == 0 || j + 1 == width) &&  map->row[j] != '1')
+					error(data);
 			}
 			j++;
 		}
@@ -120,9 +156,9 @@ void	issurrounded(t_map *map, int map_height, int map_width)
 
 void	isvalid_map(t_base *data)
 {
-	isrectangle(data->map);
-	contains_char(data->map, &data->counts);
-	contains_unnecessary(data->map, "01CEP\n");
-	issurrounded(data->map, data->map_height, data->map_width);
-	able_to_goal(data->map, &data->index);
+	isrectangle(data);
+	contains_char(data);
+	contains_unnecessary(data, "01CEP\n");
+	issurrounded(data);
+	//able_to_goal(data);
 }
