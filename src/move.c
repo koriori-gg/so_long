@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:18:44 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/21 12:23:25 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/24 22:14:51 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,16 @@ void	move_left(t_map *map, t_index *index, t_count *counts)
 		counts->walk += 1;
 		counts->move = MOVE;
 	}
-	// else if (ptr->row[data->index.x + 1] == 'E')
+	else if (counts->status == COMPLETE && ptr->row[index->x - 1] == 'E')
+	{
+		ptr->row[index->x - 1] = 'P';
+		ptr->row[index->x] = '0';
+		index->x -= 1;
+		counts->current += 1;
+		counts->walk += 1;
+		counts->move = MOVE;
+		counts->play = FINISH;
+	}
 
 }
 int	input_key(int keycode, t_base *data)
@@ -188,7 +197,6 @@ int	input_key(int keycode, t_base *data)
 		move_right(data->map, &data->index, &data->counts);
 		data->dir_now = DIR_RIGHT;
 	}
-
 	else
 		printf("hoge\n");
 	//printf("index : x : %d y : %d\n", data->index.x, data->index.y);

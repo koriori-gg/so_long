@@ -6,16 +6,16 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 14:47:15 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/21 14:49:59 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/25 14:46:55 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-void	error()
-{
-	write(1,"error\n",6);
-	exit(1);
-}
+// void	error()
+// {
+// 	write(1,"error\n",6);
+// 	exit(1);
+// }
 
 size_t	strcount(char *str, char c)
 {
@@ -78,10 +78,8 @@ void	contains_unnecessary(t_map *map, char *chars)
 	{
 		i = 0;
 		str = map->row;
-		//printf("str %s\n", str);
 		while (str[i])
 		{
-			// printf("str[i] = %c\n", str[i]);
 			if (ft_strchr(chars, str[i]) == NULL)
 				error();
 			i++;
@@ -126,5 +124,5 @@ void	isvalid_map(t_base *data)
 	contains_char(data->map, &data->counts);
 	contains_unnecessary(data->map, "01CEP\n");
 	issurrounded(data->map, data->map_height, data->map_width);
-	able_to_goal(data->map, &data->index);//関数名
+	able_to_goal(data->map, &data->index);
 }

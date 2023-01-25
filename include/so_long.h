@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:19:22 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/21 14:48:47 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/25 14:47:24 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@
 # define MOVE			1
 # define STAY			0
 
+# define PLAYING		1
+# define FINISH			0
 
 typedef struct	s_map {
 	char			*row;
@@ -75,6 +77,7 @@ typedef struct s_count
 	int		collect;
 	int		current;
 	int		status;//FLG管理したい
+	int		play;
 	int		walk;
 	int		move;
 }				t_count;
@@ -119,5 +122,7 @@ void	print_step(t_count *counts);
 void	contains_unnecessary(t_map *map, char *chars);
 //goal
 void	able_to_goal(t_map *map, t_index *index);
+//close
+void	error(t_base *data);
 
 #endif

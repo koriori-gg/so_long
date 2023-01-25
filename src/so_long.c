@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:18:28 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/21 14:56:56 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/24 21:46:17 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@ void	init_window(t_base *data)
 void	init_count(t_count *counts)
 {
 	counts->collect = 0;
-	counts->status = INCOMPLETE;
 	counts->current = 0;
+	counts->status = INCOMPLETE;
+	counts->play = PLAYING;
 	counts->walk = 0;
 	counts->move = STAY;
 }
