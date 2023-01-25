@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:18:44 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/26 00:20:19 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/26 00:33:45 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,19 @@ void	move_down(t_map *map, t_index *index, t_count *counts)
 		i++;
 	}
 	dst = ptr->next;
-	if (ft_strchr("0CE", dst->row[index->x]))
-	{
-		if (counts->status == INCOMPLETE && dst->row[index->x] == 'E')
-			return ;
-		if (counts->status == COMPLETE && dst->row[index->x] == 'E')
-			counts->play = FINISH;
-		if (dst->row[index->x] == 'C')
-			counts->current += 1;
-		dst->row[index->x] = 'P';
-		ptr->row[index->x] = '0';
-		index->y += 1;
-		counts->walk += 1;
-		counts->move = MOVE;
-
-	}
+	if (ft_strchr("0CE", dst->row[index->x]) == NULL)
+		return ;
+	if (counts->status == INCOMPLETE && dst->row[index->x] == 'E')
+		return ;
+	if (counts->status == COMPLETE && dst->row[index->x] == 'E')
+		counts->play = FINISH;
+	if (dst->row[index->x] == 'C')
+		counts->current += 1;
+	dst->row[index->x] = 'P';
+	ptr->row[index->x] = '0';
+	index->y += 1;
+	counts->walk += 1;
+	counts->move = MOVE;
 }
 
 void	move_up(t_map *map, t_index *index, t_count *counts)
@@ -62,33 +60,19 @@ void	move_up(t_map *map, t_index *index, t_count *counts)
 	}
 	dst = ptr;
 	ptr = ptr->next;
-	if(dst->row[index->x] == '0')
-	{
-		dst->row[index->x] = 'P';
-		ptr->row[index->x] = '0';
-		index->y -= 1;
-		counts->walk += 1;
-		counts->move = MOVE;
-	}
-	else if (dst->row[index->x] == 'C')
-	{
-		dst->row[index->x] = 'P';
-		ptr->row[index->x] = '0';
-		index->y -= 1;
-		counts->current +=1;	
-		counts->walk += 1;
-		counts->move = MOVE;
-	}
-	else if (counts->status == COMPLETE && dst->row[index->x] == 'E')
-	{
-		dst->row[index->x] = 'P';
-		ptr->row[index->x] = '0';
-		index->y -= 1;
-		counts->current +=1;	
-		counts->walk += 1;
-		counts->move = MOVE;
+	if (ft_strchr("0CE", dst->row[index->x]) == NULL)
+		return ;
+	if (counts->status == INCOMPLETE && dst->row[index->x] == 'E')
+		return ;
+	if (counts->status == COMPLETE && dst->row[index->x] == 'E')
 		counts->play = FINISH;
-	}
+	if (dst->row[index->x] == 'C')
+		counts->current += 1;
+	dst->row[index->x] = 'P';
+	ptr->row[index->x] = '0';
+	index->y -= 1;
+	counts->walk += 1;
+	counts->move = MOVE;
 }
 
 void	move_right(t_map *map, t_index *index, t_count *counts)
@@ -105,34 +89,19 @@ void	move_right(t_map *map, t_index *index, t_count *counts)
 		ptr = ptr->next;
 		i++;
 	}
-	if(ptr->row[index->x + 1] == '0')
-	{
-		ptr->row[index->x + 1] = 'P';
-		ptr->row[index->x] = '0';
-		index->x += 1;
-		counts->walk += 1;
-		counts->move = MOVE;
-	}
-	else if (ptr->row[index->x + 1] == 'C')
-	{
-		ptr->row[index->x + 1] = 'P';
-		ptr->row[index->x] = '0';
-		index->x += 1;
-		counts->current += 1;
-		counts->walk += 1;
-		counts->move = MOVE;
-	}
-	else if (counts->status == COMPLETE && ptr->row[index->x + 1] == 'E')
-	{
-		ptr->row[index->x + 1] = 'P';
-		ptr->row[index->x] = '0';
-		index->x += 1;
-		counts->current += 1;
-		counts->walk += 1;
-		counts->move = MOVE;
+	if (ft_strchr("0CE", ptr->row[index->x + 1]) == NULL)
+		return ;
+	if (counts->status == INCOMPLETE && ptr->row[index->x + 1] == 'E')
+		return ;
+	if (counts->status == COMPLETE && ptr->row[index->x + 1] == 'E')
 		counts->play = FINISH;
-	}
-
+	if (ptr->row[index->x + 1] == 'C')
+		counts->current += 1;
+	ptr->row[index->x + 1] = 'P';
+	ptr->row[index->x] = '0';
+	index->x += 1;
+	counts->walk += 1;
+	counts->move = MOVE;
 }
 
 void	move_left(t_map *map, t_index *index, t_count *counts)
@@ -149,34 +118,19 @@ void	move_left(t_map *map, t_index *index, t_count *counts)
 		ptr = ptr->next;
 		i++;
 	}
-	if(ptr->row[index->x - 1] == '0')
-	{
-		ptr->row[index->x - 1] = 'P';
-		ptr->row[index->x] = '0';
-		index->x -= 1;
-		counts->walk += 1;
-		counts->move = MOVE;
-	}
-	else if (ptr->row[index->x - 1] == 'C')
-	{
-		ptr->row[index->x - 1] = 'P';
-		ptr->row[index->x] = '0';
-		index->x -= 1;
-		counts->current += 1;
-		counts->walk += 1;
-		counts->move = MOVE;
-	}
-	else if (counts->status == COMPLETE && ptr->row[index->x - 1] == 'E')
-	{
-		ptr->row[index->x - 1] = 'P';
-		ptr->row[index->x] = '0';
-		index->x -= 1;
-		counts->current += 1;
-		counts->walk += 1;
-		counts->move = MOVE;
+	if (ft_strchr("0CE", ptr->row[index->x - 1]) == NULL)
+		return ;
+	if (counts->status == INCOMPLETE && ptr->row[index->x - 1] == 'E')
+		return ;
+	if (counts->status == COMPLETE && ptr->row[index->x - 1] == 'E')
 		counts->play = FINISH;
-	}
-
+	if (ptr->row[index->x - 1] == 'C')
+		counts->current += 1;
+	ptr->row[index->x - 1] = 'P';
+	ptr->row[index->x] = '0';
+	index->x -= 1;
+	counts->walk += 1;
+	counts->move = MOVE;
 }
 int	input_key(int keycode, t_base *data)
 {
