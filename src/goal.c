@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 14:47:05 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/26 16:52:47 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/26 21:08:03 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,19 +95,17 @@ void	able_to_goal(t_base *data)
 	t_map	*test;
 	size_t	i;
 
-
 	dup = mapdup(data->map);
 	test = dup;
 	i = 0;
 	while (dup != NULL)
 	{
 		if (i == data->index.y)
-			break;
+			break ;
 		i++;
 		dup = dup->next;
 	}
 	backtracking(dup, data->index.x);
-	print_map(test);
-	dup_contain(data, dup, "01PE\n");//CE->1//error reason
-	ft_free_map(dup);//TODO: 関数にする必要あり？？
+	dup_contain(data, dup, "01PE\n");
+	ft_free_map(dup);
 }

@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 14:56:28 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/26 17:15:06 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/26 21:12:44 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	move_left(t_map *map, t_index *index, t_count *counts)
 	while (ptr != NULL)
 	{
 		if (i == index->y)
-			break;
+			break ;
 		ptr = ptr->next;
 		i++;
 	}

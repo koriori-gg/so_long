@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:18:28 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/26 17:03:19 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/26 21:02:10 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,8 @@ int	main(int argc, char **argv)
 	init_struct(&data);
 	input_map(&data.map, argv);
 	init_index(&data);
-	print_map(data.map);
-	isvalid_map(&data);//TODO:validate_map(); 作成
-	init_asset(&data);//TODO: 32の時ここで詰まる
+	isvalid_map(&data);
+	init_asset(&data);
 	init_window(&data);
 	mlx_key_hook(data.win, input_key, &data);
 	mlx_loop_hook(data.mlx, main_loop, &data);

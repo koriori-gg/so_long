@@ -6,18 +6,18 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:19:22 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/26 17:17:37 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/26 21:27:11 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include "ft_printf.h"
-#include "get_next_line.h"
-#include "libft.h"
-#include "mlx_int.h"
-#include "mlx.h"
+# include "ft_printf.h"
+# include "get_next_line.h"
+# include "libft.h"
+# include "mlx_int.h"
+# include "mlx.h"
 
 # define KEY_PRESS		2
 
@@ -48,17 +48,17 @@
 # define EXIT			1
 # define OTHER			0
 
-typedef struct	s_map {
+typedef struct s_map {
 	char			*row;
 	struct s_map	*next;
 	struct s_map	*prev;
 }				t_map;
 
-typedef struct	s_image {
+typedef struct s_image {
 	void	*img;
 	char	*path;
-	int		width;//iran
-	int		height;//iran
+	int		width;
+	int		height;
 }				t_image;
 
 typedef struct s_index
@@ -67,7 +67,7 @@ typedef struct s_index
 	int	y;
 }				t_index;
 
-typedef struct	s_data {
+typedef struct s_data {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -79,15 +79,14 @@ typedef struct s_count
 {
 	size_t	collect;
 	size_t	current;
-	int		status;//FLG管理したい
+	int		status;
 	int		play;
 	size_t	step;
 	int		move;
 	int		before;
 }				t_count;
 
-
-typedef struct	s_base {
+typedef struct s_base {
 	void	*mlx;
 	void	*win;
 	int		map_height;
@@ -96,8 +95,8 @@ typedef struct	s_base {
 	t_map	*map;
 	t_image	player[4][3];
 	t_image	tile[5];
-	int		image_height;
-	int		image_width;
+	int		img_height;
+	int		img_width;
 	t_data	img;
 	int		dir_now;
 	t_count	counts;
@@ -111,9 +110,9 @@ t_map	*ft_mapnew(char *str);
 int		ft_mapsize(t_map *map);
 void	ft_mapadd_back(t_map **map, t_map *new);
 void	input_map(t_map **map, char **argv);
-void	print_map(t_map *map);
+//void	print_map(t_map *map);
 //move
-int	input_key(int keycode, t_base *data);
+int		input_key(int keycode, t_base *data);
 //asset
 void	init_asset(t_base *data);
 //index
@@ -133,7 +132,7 @@ void	able_to_goal(t_base *data);
 //close
 void	end_game(t_base *data);
 void	error_free(t_base *data);
-void	error();
+void	error(void);
 //free
 void	ft_free_data(t_base *data);
 void	ft_free_map(t_map *map);
@@ -142,5 +141,6 @@ void	move_up(t_map *map, t_index *index, t_count *counts);
 void	move_down(t_map *map, t_index *index, t_count *counts);
 void	move_left(t_map *map, t_index *index, t_count *counts);
 void	move_right(t_map *map, t_index *index, t_count *counts);
-
+//rectangle
+void	isrectangle(t_base *data);
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid.c                                            :+:      :+:    :+:   */
+/*   valid_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 14:47:15 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/26 16:50:11 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/26 21:17:35 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ size_t	strcount(char *str, char c)
 	}
 	return (count);
 }
+
 void	contains_char(t_base *data)
 {
 	t_map	*map;
@@ -50,21 +51,6 @@ void	contains_char(t_base *data)
 	if (start != 1 || exit != 1 || collect < 1)
 		error_free(data);
 	data->counts.collect = collect;
-}
-
-void	isrectangle(t_base *data)
-{
-	t_map	*map;
-	size_t	len;
-
-	map = data->map;
-	len = ft_strlen(map->row);
-	while (map != NULL)
-	{	
-		if (len != ft_strlen(map->row) || len == 0)
-			error_free(data);
-		map = map->next;
-	}
 }
 
 void	contains_unnecessary(t_base *data, char *chars)
@@ -97,8 +83,8 @@ void	issurrounded(t_base *data)
 	int		j;
 
 	map = data->map;
-	height = data->image_height;
-	width = data->image_width;
+	height = data->img_height;
+	width = data->img_width;
 	i = 0;
 	while (map != NULL)
 	{
@@ -112,7 +98,7 @@ void	issurrounded(t_base *data)
 			}
 			else
 			{
-				if((j == 0 || j + 1 == width) &&  map->row[j] != '1')
+				if ((j == 0 || j + 1 == width) && map->row[j] != '1')
 					error_free(data);
 			}
 			j++;
