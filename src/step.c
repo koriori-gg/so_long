@@ -3,6 +3,6 @@
 void	print_step(t_count *counts)
 {
 	if (counts->move == MOVE)
-		ft_printf("steps : %d", counts->walk);
+		ft_printf("steps : %d\n", counts->walk);
 	counts->move = STAY;
 }

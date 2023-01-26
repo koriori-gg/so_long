@@ -6,7 +6,7 @@
 #    By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/19 22:19:07 by ihashimo          #+#    #+#              #
-#    Updated: 2023/01/25 14:47:45 by ihashimo         ###   ########.fr        #
+#    Updated: 2023/01/26 15:00:13 by ihashimo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,10 @@ SRC = src/so_long.c \
 	src/map.c \
 	src/asset.c \
 	src/move.c \
+	src/move_up.c \
+	src/move_down.c \
+	src/move_right.c \
+	src/move_left.c \
 	src/index.c \
 	src/draw.c \
 	src/valid.c \

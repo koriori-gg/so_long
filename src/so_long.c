@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:18:28 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/25 17:47:17 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/26 14:14:34 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	init_count(t_count *counts)
 	counts->play = PLAYING;
 	counts->walk = 0;
 	counts->move = STAY;
+	counts->before = OTHER;
 }
 
 void	init_struct(t_base *data)

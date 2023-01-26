@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 14:47:15 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/25 15:31:21 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/26 14:03:49 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,5 +160,5 @@ void	isvalid_map(t_base *data)
 	contains_char(data);
 	contains_unnecessary(data, "01CEP\n");
 	issurrounded(data);
-	//able_to_goal(data);
+	able_to_goal(data);//TODO: EtoC
 }

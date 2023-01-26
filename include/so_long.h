@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:19:22 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/25 17:44:35 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/26 14:57:43 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@
 # define PLAYING		1
 # define FINISH			0
 
+# define EXIT			1
+# define OTHER			0
+
 typedef struct	s_map {
 	char			*row;
 	struct s_map	*next;
@@ -80,6 +83,7 @@ typedef struct s_count
 	int		play;
 	int		walk;
 	int		move;
+	int		before;
 }				t_count;
 
 
@@ -129,6 +133,11 @@ void	end_game(t_base *data);
 void	ft_free_data(t_base *data);
 void	ft_free_map(t_map *map);
 
+//move_utils
+void	move_up(t_map *map, t_index *index, t_count *counts);
+void	move_down(t_map *map, t_index *index, t_count *counts);
+void	move_left(t_map *map, t_index *index, t_count *counts);
+void	move_right(t_map *map, t_index *index, t_count *counts);
 //temp
 void	contains_unnecessary2(t_base *data, t_map *dup, char *chars);
 
