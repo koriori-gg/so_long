@@ -7,7 +7,7 @@ void	ft_free_map(t_map *map)
 	{
 		ptr = map;
 		map = map->next;
-		//TODO: rowと分けてやらなあかんか確認
+		free(ptr->row);
 		free(ptr);
 	}
 }

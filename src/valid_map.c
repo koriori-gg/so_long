@@ -6,16 +6,11 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 14:47:15 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/26 14:03:49 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/26 16:50:11 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-// void	error()
-// {
-// 	write(1,"error\n",6);
-// 	exit(1);
-// }
 
 size_t	strcount(char *str, char c)
 {
@@ -53,7 +48,7 @@ void	contains_char(t_base *data)
 		map = map->next;
 	}
 	if (start != 1 || exit != 1 || collect < 1)
-		error(data);
+		error_free(data);
 	data->counts.collect = collect;
 }
 
@@ -67,7 +62,7 @@ void	isrectangle(t_base *data)
 	while (map != NULL)
 	{	
 		if (len != ft_strlen(map->row) || len == 0)
-			error(data);
+			error_free(data);
 		map = map->next;
 	}
 }
@@ -86,32 +81,7 @@ void	contains_unnecessary(t_base *data, char *chars)
 		while (str[i])
 		{
 			if (ft_strchr(chars, str[i]) == NULL)
-				error(data);
-			i++;
-		}
-		map = map->next;
-	}
-}
-
-void	contains_unnecessary2(t_base *data, t_map *dup, char *chars)
-{
-	t_map	*map;
-	size_t	i;
-	char	*str;
-
-	map = dup;
-	while (map != NULL)
-	{
-		i = 0;
-		str = map->row;
-		while (str[i])
-		{
-			if (ft_strchr(chars, str[i]) == NULL)
-			{
-				ft_free_map(dup);
-				error(data);
-			}
-
+				error_free(data);
 			i++;
 		}
 		map = map->next;
@@ -138,12 +108,12 @@ void	issurrounded(t_base *data)
 			if (i == 0 || i + 1 == height)
 			{
 				if (map->row[j] != '1')
-					error(data);
+					error_free(data);
 			}
 			else
 			{
 				if((j == 0 || j + 1 == width) &&  map->row[j] != '1')
-					error(data);
+					error_free(data);
 			}
 			j++;
 		}
@@ -152,13 +122,11 @@ void	issurrounded(t_base *data)
 	}
 }
 
-
-
 void	isvalid_map(t_base *data)
 {
 	isrectangle(data);
 	contains_char(data);
 	contains_unnecessary(data, "01CEP\n");
 	issurrounded(data);
-	able_to_goal(data);//TODO: EtoC
+	able_to_goal(data);
 }

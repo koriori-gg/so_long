@@ -6,20 +6,20 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 14:59:21 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/26 14:59:34 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:15:05 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	update_down(t_map *dst, t_map *ptr, t_index *index, t_count *counts)
+static void	update_down(t_map *dst, t_map *ptr, t_index *index, t_count *counts)
 {
 	if (counts->status == INCOMPLETE && dst->row[index->x] == 'E')
 	{
 		dst->row[index->x] = 'P';
 		ptr->row[index->x] = '0';
 		index->y += 1;
-		counts->walk += 1;
+		counts->step += 1;
 		counts->move = MOVE;
 		counts->before = EXIT;
 		return ;
@@ -36,7 +36,7 @@ void	update_down(t_map *dst, t_map *ptr, t_index *index, t_count *counts)
 		counts->before = OTHER;
 	}
 	index->y += 1;
-	counts->walk += 1;
+	counts->step += 1;
 	counts->move = MOVE;
 }
 

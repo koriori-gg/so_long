@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:17:14 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/24 11:18:42 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/26 16:45:57 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ static void	*ft_xpm_to_image(t_base *data, char *str)
 	img = mlx_xpm_file_to_image(data->mlx, path, &data->image_width, &data->image_height);
 	free(path);
 	if (!img)
-		exit(1);
-		//error();
+		error_free(data);
 	return (img);
 }
 

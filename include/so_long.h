@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:19:22 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/26 14:57:43 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:17:37 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,11 @@ typedef struct	s_data {
 
 typedef struct s_count
 {
-	int		collect;
-	int		current;
+	size_t	collect;
+	size_t	current;
 	int		status;//FLG管理したい
 	int		play;
-	int		walk;
+	size_t	step;
 	int		move;
 	int		before;
 }				t_count;
@@ -102,7 +102,10 @@ typedef struct	s_base {
 	int		dir_now;
 	t_count	counts;
 }				t_base;
-
+//init
+void	init_window(t_base *data);
+void	init_count(t_count *counts);
+void	init_struct(t_base *data);
 //map
 t_map	*ft_mapnew(char *str);
 int		ft_mapsize(t_map *map);
@@ -114,7 +117,6 @@ int	input_key(int keycode, t_base *data);
 //asset
 void	init_asset(t_base *data);
 //index
-void	get_index(t_map *map, t_index *index);
 void	init_index(t_base *data);
 //draw
 void	draw_map(t_base *data);
@@ -122,23 +124,23 @@ void	draw_map(t_base *data);
 void	isvalid_map(t_base *data);
 //step
 void	print_step(t_count *counts);
-//valid
+//valid_file
+void	validate_file(char *arg);
+//valid_map
 void	contains_unnecessary(t_base *data, char *chars);
 //goal
 void	able_to_goal(t_base *data);
 //close
-void	error(t_base *data);
 void	end_game(t_base *data);
+void	error_free(t_base *data);
+void	error();
 //free
 void	ft_free_data(t_base *data);
 void	ft_free_map(t_map *map);
-
 //move_utils
 void	move_up(t_map *map, t_index *index, t_count *counts);
 void	move_down(t_map *map, t_index *index, t_count *counts);
 void	move_left(t_map *map, t_index *index, t_count *counts);
 void	move_right(t_map *map, t_index *index, t_count *counts);
-//temp
-void	contains_unnecessary2(t_base *data, t_map *dup, char *chars);
 
 #endif

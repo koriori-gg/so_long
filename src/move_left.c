@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 14:56:28 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/26 14:57:03 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:15:06 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	update_left(t_map *ptr, t_index *index, t_count *counts)
 		ptr->row[index->x - 1] = 'P';
 		ptr->row[index->x] = '0';
 		index->x -= 1;
-		counts->walk += 1;
+		counts->step += 1;
 		counts->move = MOVE;
 		counts->before = EXIT;
 		return ;
@@ -36,7 +36,7 @@ static void	update_left(t_map *ptr, t_index *index, t_count *counts)
 		counts->before = OTHER;
 	}
 	index->x -= 1;
-	counts->walk += 1;
+	counts->step += 1;
 	counts->move = MOVE;
 }
 

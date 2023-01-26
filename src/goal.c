@@ -6,13 +6,13 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 14:47:05 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/26 14:10:31 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/26 16:52:47 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_map	*mapdup(t_map *map)
+static t_map	*mapdup(t_map *map)
 {
 	t_map	*ret;
 	size_t	i;
@@ -30,7 +30,7 @@ t_map	*mapdup(t_map *map)
 	return (ret);
 }
 
-void	backtracking(t_map *map, int i)
+static void	backtracking(t_map *map, int i)
 {
 	char	*str_up;
 	char	*str;
@@ -64,6 +64,30 @@ void	backtracking(t_map *map, int i)
 	}
 }
 
+static void	dup_contain(t_base *data, t_map *dup, char *chars)
+{
+	t_map	*map;
+	size_t	i;
+	char	*str;
+
+	map = dup;
+	while (map != NULL)
+	{
+		i = 0;
+		str = map->row;
+		while (str[i])
+		{
+			if (ft_strchr(chars, str[i]) == NULL)
+			{
+				ft_free_map(dup);
+				error_free(data);
+			}
+			i++;
+		}
+		map = map->next;
+	}
+}
+
 void	able_to_goal(t_base *data)
 {
 	char	*str;
@@ -84,6 +108,6 @@ void	able_to_goal(t_base *data)
 	}
 	backtracking(dup, data->index.x);
 	print_map(test);
-	contains_unnecessary2(data, dup, "01PE\n");//CE->1//error reason
+	dup_contain(data, dup, "01PE\n");//CE->1//error reason
 	ft_free_map(dup);//TODO: 関数にする必要あり？？
 }

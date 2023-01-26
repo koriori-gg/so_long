@@ -1,44 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   index.c                                            :+:      :+:    :+:   */
+/*   valid_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 22:17:11 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/26 16:53:20 by ihashimo         ###   ########.fr       */
+/*   Created: 2023/01/26 16:57:31 by ihashimo          #+#    #+#             */
+/*   Updated: 2023/01/26 17:04:31 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	get_index(t_map *map, t_index *index)
+void	validate_file(char *arg)
 {
-	int	i;
-	int	j;
+	char	*ptr;
+	int		fd;
 
-	i = 0;
-	while (map != NULL)
+	ptr = ft_strrchr(arg , '.');
+	if (ptr == NULL)
+		error();
+	if (ft_memcmp(ptr, ".ber", 4) != 0)
+		error();
+	fd = open(arg, O_RDONLY);
+	if (fd == -1)
 	{
-		j = 0;
-		while ((map->row)[j])
-		{
-			if ((map->row)[j] == 'P')
-			{
-				index->x = j;
-				index->y = i;
-				return ;
-			}
-			j++;
-		}
-		i++;
-		map = map->next;
+		close(fd);//TODO:-1の場合する必要ある？？
+		error();	
 	}
-}
-
-void	init_index(t_base *data)
-{
-	get_index(data->map, &data->index);
-	data->map_height = ft_mapsize(data->map);
-	data->map_width = ft_strlen(data->map->row) - 1;
+	close(fd);
 }

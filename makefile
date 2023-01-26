@@ -6,7 +6,7 @@
 #    By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/19 22:19:07 by ihashimo          #+#    #+#              #
-#    Updated: 2023/01/26 15:00:13 by ihashimo         ###   ########.fr        #
+#    Updated: 2023/01/26 17:00:52 by ihashimo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,11 +32,13 @@ SRC = src/so_long.c \
 	src/move_left.c \
 	src/index.c \
 	src/draw.c \
-	src/valid.c \
+	src/valid_map.c \
+	src/valid_file.c \
 	src/step.c \
 	src/goal.c \
 	src/close.c \
 	src/free.c \
+	src/init.c \
 
 OBJ = $(SRC:.c=.o)
 

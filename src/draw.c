@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:17:07 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/21 12:23:03 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:28:38 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	draw_map(t_base *data)
 
 	map_top = data->map;
 	j = 0;
+	//TODO: Eに乗ってる時の画像考える
 	while (map_top != NULL)
 	{
 		i = 0;
@@ -32,7 +33,11 @@ void	draw_map(t_base *data)
 			else if (str[i] == '1')
 				mlx_put_image_to_window(data->mlx, data->win, data->tile[1].img, i * data->image_width, j * data->image_height);
 			else if (str[i] == 'P')
-				mlx_put_image_to_window(data->mlx, data->win, data->player[data->dir_now][0].img, i * data->image_width, j * data->image_height);
+			{	if (data->counts.before == EXIT)
+					mlx_put_image_to_window(data->mlx, data->win, data->player[data->dir_now][EXIT].img, i * data->image_width, j * data->image_height);
+				else
+					mlx_put_image_to_window(data->mlx, data->win, data->player[data->dir_now][OTHER].img, i * data->image_width, j * data->image_height);
+			}
 			else if (str[i] == 'E')
 				mlx_put_image_to_window(data->mlx, data->win, data->tile[data->counts.status].img, i * data->image_width, j * data->image_height);
 			else if (str[i] == 'C')

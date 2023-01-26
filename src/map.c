@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:18:50 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/21 12:12:29 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/26 16:48:47 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	input_map(t_map **map, char **argv)
 	}
 	close(fd);
 }
-//不要
+//TODO: 不要
 void print_map(t_map *map)
 {
 	t_map *node;
