@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:18:50 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/26 21:20:25 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/29 21:07:10 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,22 @@ void	ft_mapadd_back(t_map **map, t_map *new)
 	}
 }
 
+static char	*check_line_feed(char *str)
+{
+	char	*new;
+
+	if (ft_strchr(str, '\n'))
+		new = strdup(str);
+	else
+		new = ft_strjoin(str, "\n");
+	free(str);
+	return (new);
+}
+
 void	input_map(t_map **map, char **argv)
 {
 	int		fd;
 	char	*str;
-	char	*temp;
 	size_t	i;
 
 	i = 1;
@@ -78,12 +89,7 @@ void	input_map(t_map **map, char **argv)
 			free(str);
 			break ;
 		}
-		if (!ft_strchr(str, '\n'))
-		{
-			temp = ft_strjoin(str, "\n");
-			free(str);
-			str = temp;
-		}
+		str = check_line_feed(str);
 		if (i == 1)
 			*map = ft_mapnew(str);
 		else

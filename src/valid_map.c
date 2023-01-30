@@ -6,13 +6,13 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 14:47:15 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/26 21:17:35 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/26 22:42:23 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-size_t	strcount(char *str, char c)
+static size_t	strcount(char *str, char c)
 {
 	size_t	i;
 	size_t	count;
@@ -30,7 +30,7 @@ size_t	strcount(char *str, char c)
 	return (count);
 }
 
-void	contains_char(t_base *data)
+static void	contains_char(t_base *data)
 {
 	t_map	*map;
 	size_t	start;
@@ -53,7 +53,7 @@ void	contains_char(t_base *data)
 	data->counts.collect = collect;
 }
 
-void	contains_unnecessary(t_base *data, char *chars)
+static void	contains_unnecessary(t_base *data, char *chars)
 {
 	t_map	*map;
 	size_t	i;
@@ -74,33 +74,24 @@ void	contains_unnecessary(t_base *data, char *chars)
 	}
 }
 
-void	issurrounded(t_base *data)
+static void	issurrounded(t_base *data)
 {
 	t_map	*map;
-	int		height;
-	int		width;
 	int		i;
 	int		j;
 
 	map = data->map;
-	height = data->img_height;
-	width = data->img_width;
-	i = 0;
+	i = 1;
 	while (map != NULL)
 	{
 		j = 0;
 		while (map->row[j] != '\n')
 		{
-			if (i == 0 || i + 1 == height)
-			{
-				if (map->row[j] != '1')
-					error_free(data);
-			}
-			else
-			{
-				if ((j == 0 || j + 1 == width) && map->row[j] != '1')
-					error_free(data);
-			}
+			if ((i == 1 || i == data->map_height) && (map->row[j] != '1'))
+				error_free(data);
+			else if ((i != 1 && i != data->map_height)
+				&& (j == 0 || j + 1 == data->map_width) && map->row[j] != '1')
+				error_free(data);
 			j++;
 		}
 		i++;

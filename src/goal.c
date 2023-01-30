@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 14:47:05 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/26 21:08:03 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/26 21:33:23 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,34 +32,27 @@ static t_map	*mapdup(t_map *map)
 
 static void	backtracking(t_map *map, int i)
 {
-	char	*str_up;
-	char	*str;
-	char	*str_down;
-
-	str_up = map->prev->row;
-	str = map->row;
-	str_down = map->next->row;
-	if ((str_up[i] == '1') && (str[i + 1] == '1') 
-		&& (str[i - 1] == '1') && (str_down[i] == '1'))
+	if ((map->prev->row[i] == '1') && (map->row[i + 1] == '1')
+		&& (map->row[i - 1] == '1') && (map->next->row[i] == '1'))
 		return ;
-	if (str[i + 1] != '1')
+	if (map->row[i + 1] != '1')
 	{
-		str[i + 1] = '1';
+		map->row[i + 1] = '1';
 		backtracking(map, i + 1);
 	}
-	if (str[i - 1] != '1')
+	if (map->row[i - 1] != '1')
 	{
-		str[i - 1] = '1';
+		map->row[i - 1] = '1';
 		backtracking(map, i - 1);
 	}
-	if (str_down[i] != '1')
+	if (map->next->row[i] != '1')
 	{
-		str_down[i] = '1';
+		map->next->row[i] = '1';
 		backtracking(map->next, i);
 	}
-	if (str_up[i] != '1')
+	if (map->prev->row[i] != '1')
 	{
-		str_up[i] = '1';
+		map->prev->row[i] = '1';
 		backtracking(map->prev, i);
 	}
 }

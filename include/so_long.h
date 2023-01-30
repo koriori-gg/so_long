@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:19:22 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/26 21:27:11 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/30 20:45:18 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "mlx.h"
 
 # define KEY_PRESS		2
+# define RED_CLOSS		17
 
 # define KEY_ESC		65307
 # define KEY_W			119
@@ -54,26 +55,18 @@ typedef struct s_map {
 	struct s_map	*prev;
 }				t_map;
 
-typedef struct s_image {
+typedef struct s_texture {
 	void	*img;
 	char	*path;
 	int		width;
 	int		height;
-}				t_image;
+}				t_texture;
 
 typedef struct s_index
 {
 	int	x;
 	int	y;
 }				t_index;
-
-typedef struct s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
 
 typedef struct s_count
 {
@@ -89,15 +82,14 @@ typedef struct s_count
 typedef struct s_base {
 	void	*mlx;
 	void	*win;
-	int		map_height;
-	int		map_width;
 	t_index	index;
 	t_map	*map;
-	t_image	player[4][3];
-	t_image	tile[5];
+	int		map_height;
+	int		map_width;
+	t_texture	player[4][3];
+	t_texture	tile[5];
 	int		img_height;
 	int		img_width;
-	t_data	img;
 	int		dir_now;
 	t_count	counts;
 }				t_base;
@@ -125,11 +117,10 @@ void	isvalid_map(t_base *data);
 void	print_step(t_count *counts);
 //valid_file
 void	validate_file(char *arg);
-//valid_map
-void	contains_unnecessary(t_base *data, char *chars);
 //goal
 void	able_to_goal(t_base *data);
 //close
+int		close_game(t_base *data);
 void	end_game(t_base *data);
 void	error_free(t_base *data);
 void	error(void);
