@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:18:28 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/30 00:02:51 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/31 10:18:08 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int argc, char **argv)
 	t_base	data;
 
 	if (argc != 2)
-		error();
+		error(AGUMENT_ERROR);
 	validate_file(argv[1]);
 	init_struct(&data);
 	input_map(&data.map, argv);

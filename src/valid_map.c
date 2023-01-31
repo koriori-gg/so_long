@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 14:47:15 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/26 22:42:23 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/31 10:43:24 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ static void	contains_char(t_base *data)
 	exit = 0;
 	collect = 0;
 	while (map != NULL)
-	{	
+	{
 		start += strcount(map->row, 'P');
 		exit += strcount(map->row, 'E');
 		collect += strcount(map->row, 'C');
 		map = map->next;
 	}
 	if (start != 1 || exit != 1 || collect < 1)
-		error_free(data);
+		error_free(data, MINIMUM_ERROR);
 	data->counts.collect = collect;
 }
 
@@ -67,7 +67,7 @@ static void	contains_unnecessary(t_base *data, char *chars)
 		while (str[i])
 		{
 			if (ft_strchr(chars, str[i]) == NULL)
-				error_free(data);
+				error_free(data, UNNESSESARY_ERROR);
 			i++;
 		}
 		map = map->next;
@@ -88,10 +88,10 @@ static void	issurrounded(t_base *data)
 		while (map->row[j] != '\n')
 		{
 			if ((i == 1 || i == data->map_height) && (map->row[j] != '1'))
-				error_free(data);
+				error_free(data, SURROUND_ERROR);
 			else if ((i != 1 && i != data->map_height)
 				&& (j == 0 || j + 1 == data->map_width) && map->row[j] != '1')
-				error_free(data);
+				error_free(data, SURROUND_ERROR);
 			j++;
 		}
 		i++;

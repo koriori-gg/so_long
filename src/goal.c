@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 14:47:05 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/26 21:33:23 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/31 10:48:47 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static void	dup_contain(t_base *data, t_map *dup, char *chars)
 			if (ft_strchr(chars, str[i]) == NULL)
 			{
 				ft_free_map(dup);
-				error_free(data);
+				error_free(data, NOTABLETOGOAL_ERROR);
 			}
 			i++;
 		}

@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 16:57:31 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/26 21:06:37 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/31 10:24:05 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	validate_file(char *arg)
 
 	ptr = ft_strrchr(arg, '.');
 	if (ptr == NULL)
-		error();
+		error(EXTENTION_ERROR);
 	if (ft_memcmp(ptr, ".ber", 4) != 0)
-		error();
+		error(EXTENTION_ERROR);
 	fd = open(arg, O_RDONLY);
 	if (fd == -1)
-		error();
+		error(READ_ERROR);
 	close(fd);
 }

@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:19:22 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/30 20:45:18 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/31 10:50:01 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,20 @@
 
 # define EXIT			1
 # define OTHER			0
+
+enum error_message
+{
+	AGUMENT_ERROR,
+	EXTENTION_ERROR,
+	READ_ERROR,
+	MINIMUM_ERROR,
+	UNNESSESARY_ERROR,
+	SURROUND_ERROR,
+	RECTANGLE_ERROR,
+	NOTABLETOGOAL_ERROR
+};
+
+
 
 typedef struct s_map {
 	char			*row;
@@ -122,8 +136,8 @@ void	able_to_goal(t_base *data);
 //close
 int		close_game(t_base *data);
 void	end_game(t_base *data);
-void	error_free(t_base *data);
-void	error(void);
+void	error_free(t_base *data, int signal);
+void	error(int signal);
 //free
 void	ft_free_data(t_base *data);
 void	ft_free_map(t_map *map);

@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 20:32:24 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/30 14:27:33 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/31 10:54:34 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,31 @@ void	end_game(t_base *data)
 	exit(0);
 }
 
-void	error_free(t_base *data)
+void	error_free(t_base *data, int signal)
 {
 	ft_free_data(data);
 	ft_printf("Error\n");
+	if (signal == MINIMUM_ERROR)
+		ft_printf("The map must contain ECSP\n");
+	if (signal == UNNESSESARY_ERROR)
+		ft_printf("The map contains except ECSP\n");
+	if (signal == SURROUND_ERROR)
+		ft_printf("The map must be surrounded by walls\n");
+	if (signal == RECTANGLE_ERROR)
+		ft_printf("The map must be rectangle\n");
+	if (signal == NOTABLETOGOAL_ERROR)
+		ft_printf("The map must be rectangle\n");
 	exit(1);
 }
 
-void	error(void)
+void	error(int signal)
 {
 	ft_printf("Error\n");
+	if (signal == AGUMENT_ERROR)
+		ft_printf("not enough arguments\n");
+	if (signal == EXTENTION_ERROR)
+		ft_printf("invalid file extension\n");
+	if (signal == READ_ERROR)
+		ft_printf("Failed to Read\n");
 	exit(1);
 }
