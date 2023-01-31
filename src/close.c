@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 20:32:24 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/31 10:54:34 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/31 11:20:07 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ void	error_free(t_base *data, int signal)
 		ft_printf("The map must be surrounded by walls\n");
 	if (signal == RECTANGLE_ERROR)
 		ft_printf("The map must be rectangle\n");
-	if (signal == NOTABLETOGOAL_ERROR)
+	if (signal == UNABLETOGOAL_ERROR)
 		ft_printf("The map must be rectangle\n");
+	if (signal == IMAGE_ERROR)
+		ft_printf("Images loading error\n");
 	exit(1);
 }
 

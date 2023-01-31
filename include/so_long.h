@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:19:22 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/31 10:50:01 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/31 11:18:15 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ enum error_message
 	UNNESSESARY_ERROR,
 	SURROUND_ERROR,
 	RECTANGLE_ERROR,
-	NOTABLETOGOAL_ERROR
+	UNABLETOGOAL_ERROR,
+	IMAGE_ERROR
 };
 
 

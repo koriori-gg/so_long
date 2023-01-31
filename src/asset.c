@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:17:14 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/26 21:12:01 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/31 11:11:57 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	*ft_xpm_to_image(t_base *data, char *str)
 			&data->img_height);
 	free(path);
 	if (!img)
-		error_free(data);
+		error_free(data, IMAGE_ERROR);
 	return (img);
 }
 

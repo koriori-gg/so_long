@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 14:47:05 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/31 10:48:47 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/31 11:18:13 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static void	dup_contain(t_base *data, t_map *dup, char *chars)
 			if (ft_strchr(chars, str[i]) == NULL)
 			{
 				ft_free_map(dup);
-				error_free(data, NOTABLETOGOAL_ERROR);
+				error_free(data, UNABLETOGOAL_ERROR);
 			}
 			i++;
 		}
@@ -83,13 +83,10 @@ static void	dup_contain(t_base *data, t_map *dup, char *chars)
 
 void	able_to_goal(t_base *data)
 {
-	char	*str;
 	t_map	*dup;
-	t_map	*test;
-	size_t	i;
+	int		i;
 
 	dup = mapdup(data->map);
-	test = dup;
 	i = 0;
 	while (dup != NULL)
 	{
