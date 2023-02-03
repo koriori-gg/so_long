@@ -6,7 +6,7 @@
 #    By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/19 22:19:07 by ihashimo          #+#    #+#              #
-#    Updated: 2023/01/31 11:18:57 by ihashimo         ###   ########.fr        #
+#    Updated: 2023/02/03 11:26:29 by ihashimo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ SRC = src/so_long.c \
 OBJ = $(SRC:.c=.o)
 
 CC = gcc
-CFLAGS = -I minilibx-linux -I include -I libft/include -Wall -Wextra -Werror
+CFLAGS = -I minilibx-linux -I include -I libft/include -I /opt/X11/include -Wall -Wextra -Werror
 XFLAGS = -L/usr/X11R6/lib -lX11 -lXext -framework OpenGL -framework AppKit
 
 all: $(NAME)

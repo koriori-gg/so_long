@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 20:32:24 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/31 11:20:07 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/31 11:49:22 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,12 @@ void	error(int signal)
 {
 	ft_printf("Error\n");
 	if (signal == AGUMENT_ERROR)
-		ft_printf("not enough arguments\n");
+		ft_printf("Not enough arguments\n");
+	if (signal == NOTHING_ERROR)
+		ft_printf("Empty file\n");
 	if (signal == EXTENTION_ERROR)
-		ft_printf("invalid file extension\n");
+		ft_printf("Invalid file extension\n");
 	if (signal == READ_ERROR)
-		ft_printf("Failed to Read\n");
+		ft_printf("Failed to read\n");
 	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:19:22 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/31 11:18:15 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/31 11:48:30 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,10 @@
 # define EXIT			1
 # define OTHER			0
 
-enum error_message
+enum e_message
 {
 	AGUMENT_ERROR,
+	NOTHING_ERROR,
 	EXTENTION_ERROR,
 	READ_ERROR,
 	MINIMUM_ERROR,
@@ -61,8 +62,6 @@ enum error_message
 	UNABLETOGOAL_ERROR,
 	IMAGE_ERROR
 };
-
-
 
 typedef struct s_map {
 	char			*row;
@@ -95,18 +94,18 @@ typedef struct s_count
 }				t_count;
 
 typedef struct s_base {
-	void	*mlx;
-	void	*win;
-	t_index	index;
-	t_map	*map;
-	int		map_height;
-	int		map_width;
+	void		*mlx;
+	void		*win;
+	t_index		index;
+	t_map		*map;
+	int			map_height;
+	int			map_width;
 	t_texture	player[4][3];
 	t_texture	tile[5];
-	int		img_height;
-	int		img_width;
-	int		dir_now;
-	t_count	counts;
+	int			img_height;
+	int			img_width;
+	int			dir_now;
+	t_count		counts;
 }				t_base;
 //init
 void	init_window(t_base *data);
