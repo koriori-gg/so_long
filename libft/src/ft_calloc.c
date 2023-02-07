@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 23:48:40 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/10 10:40:55 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/02/07 10:32:01 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_calloc(size_t n, size_t size)
 		n = 1;
 		size = 1;
 	}
-	if (size > SIZE_MAX / n)
+	if (size > SSIZE_MAX / n)
 		return (NULL);
 	ret = malloc(size * n);
 	if (!ret)
