@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 12:23:07 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/10 11:41:36 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/02/21 14:52:16 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,5 @@
 # include <stdio.h>
 # include "libft.h"
 
-char	*ft_free(char *save, char *temp);
-char	*ft_read_file(int fd, char *save);
-char	*ft_get_line(char *save);
-char	*ft_save_line(char *save);
 char	*get_next_line(int fd);
 #endif

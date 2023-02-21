@@ -6,13 +6,13 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 12:23:04 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/10 13:27:01 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/02/21 14:52:19 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_free(char *save, char *temp)
+static char	*ft_free(char *save, char *temp)
 {
 	char	*res;
 
@@ -21,7 +21,7 @@ char	*ft_free(char *save, char *temp)
 	return (res);
 }
 
-char	*ft_read_file(int fd, char *save)
+static char	*ft_read_file(int fd, char *save)
 {
 	char	*temp;
 	int		bytes;
@@ -50,7 +50,7 @@ char	*ft_read_file(int fd, char *save)
 	return (save);
 }
 
-char	*ft_get_line(char *save)
+static char	*ft_get_line(char *save)
 {
 	size_t	i;
 	size_t	j;
@@ -76,7 +76,7 @@ char	*ft_get_line(char *save)
 	return (line);
 }
 
-char	*ft_save_line(char *save)
+static char	*ft_save_line(char *save)
 {
 	size_t	i;
 	size_t	j;
