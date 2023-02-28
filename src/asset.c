@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:17:14 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/31 11:11:57 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/02/28 08:40:27 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,12 @@ void	init_asset(t_base *data)
 {
 	data->player[DIR_DOWN][0].img = ft_xpm_to_image(data, "player_front.xpm");
 	data->player[DIR_DOWN][1].img = ft_xpm_to_image(data, "player_front1.xpm");
-	data->player[DIR_DOWN][2].img = ft_xpm_to_image(data, "player_front2.xpm");
 	data->player[DIR_UP][0].img = ft_xpm_to_image(data, "player_back.xpm");
 	data->player[DIR_UP][1].img = ft_xpm_to_image(data, "player_back1.xpm");
-	data->player[DIR_UP][2].img = ft_xpm_to_image(data, "player_back2.xpm");
 	data->player[DIR_RIGHT][0].img = ft_xpm_to_image(data, "player_right.xpm");
 	data->player[DIR_RIGHT][1].img = ft_xpm_to_image(data, "player_right1.xpm");
-	data->player[DIR_RIGHT][2].img = ft_xpm_to_image(data, "player_right2.xpm");
 	data->player[DIR_LEFT][0].img = ft_xpm_to_image(data, "player_left.xpm");
 	data->player[DIR_LEFT][1].img = ft_xpm_to_image(data, "player_left1.xpm");
-	data->player[DIR_LEFT][2].img = ft_xpm_to_image(data, "player_left2.xpm");
 	data->tile[0].img = ft_xpm_to_image(data, "zero.xpm");
 	data->tile[1].img = ft_xpm_to_image(data, "one.xpm");
 	data->tile[2].img = ft_xpm_to_image(data, "collect.xpm");

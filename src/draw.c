@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:17:07 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/26 22:57:45 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/02/28 10:05:10 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,20 @@ static void	draw_image(t_base *data, char *str, int i, int j)
 	width = i * data->img_width;
 	height = j * data->img_height;
 	if (str[i] == '0')
-		mlx_put_image_to_window(data->mlx, data->win,
-			data->tile[0].img, width, height);
+		ft_mlx_put_image_to_window(data, data->tile[0].img, width, height);
 	else if (str[i] == '1')
-		mlx_put_image_to_window(data->mlx, data->win,
-			data->tile[1].img, width, height);
+		ft_mlx_put_image_to_window(data, data->tile[1].img, width, height);
 	else if (str[i] == 'P' && data->counts.before == EXIT)
-		mlx_put_image_to_window(data->mlx, data->win,
+		ft_mlx_put_image_to_window(data,
 			data->player[data->dir_now][EXIT].img, width, height);
 	else if (str[i] == 'P' && data->counts.before == OTHER)
-		mlx_put_image_to_window(data->mlx, data->win,
+		ft_mlx_put_image_to_window(data,
 			data->player[data->dir_now][OTHER].img, width, height);
 	else if (str[i] == 'E')
-		mlx_put_image_to_window(data->mlx, data->win,
+		ft_mlx_put_image_to_window(data,
 			data->tile[data->counts.status].img, width, height);
 	else if (str[i] == 'C')
-		mlx_put_image_to_window(data->mlx, data->win,
-			data->tile[2].img, width, height);
+		ft_mlx_put_image_to_window(data, data->tile[2].img, width, height);
 }
 
 void	draw_map(t_base *data)

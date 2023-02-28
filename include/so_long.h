@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:19:22 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/31 11:48:30 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/02/28 10:05:53 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ enum e_message
 	SURROUND_ERROR,
 	RECTANGLE_ERROR,
 	UNABLETOGOAL_ERROR,
-	IMAGE_ERROR
+	IMAGE_ERROR,
+	MLX_ERROR
 };
 
 typedef struct s_map {
@@ -107,10 +108,19 @@ typedef struct s_base {
 	int			dir_now;
 	t_count		counts;
 }				t_base;
+//mlx
+void	ft_mlx_key_hook(t_base *data);
+void	ft_mlx_hook(t_base *data);
+void	ft_mlx_loop_hook(t_base *data);
+void	ft_mlx_loop(t_base *data);
+void	ft_mlx_destroy_window(t_base *data);
+//mlx_image
+void	ft_mlx_put_image_to_window(t_base *data,
+			void *img, int width, int height);
 //init
-void	init_window(t_base *data);
-void	init_count(t_count *counts);
-void	init_struct(t_base *data);
+void	init_struct(t_base *data, char **argv);
+//main_loop
+int		main_loop(t_base *data);
 //map
 t_map	*ft_mapnew(char *str);
 int		ft_mapsize(t_map *map);

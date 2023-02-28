@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 20:32:24 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/31 11:49:22 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/02/28 09:19:37 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	close_game(t_base *data)
 {
-	mlx_destroy_window(data->mlx, data->win);
+	ft_mlx_destroy_window(data);
 	ft_free_data(data);
 	exit(0);
 }
 
 void	end_game(t_base *data)
 {
-	mlx_destroy_window(data->mlx, data->win);
+	ft_mlx_destroy_window(data);
 	ft_free_data(data);
 	exit(0);
 }
@@ -42,6 +42,8 @@ void	error_free(t_base *data, int signal)
 		ft_printf("The map must be rectangle\n");
 	if (signal == IMAGE_ERROR)
 		ft_printf("Images loading error\n");
+	if (signal == MLX_ERROR)
+		ft_printf("mlx error\n");
 	exit(1);
 }
 
