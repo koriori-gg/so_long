@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:19:22 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/03/02 20:39:31 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/03/02 21:56:24 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ t_map	*ft_mapnew(char *str);
 int		ft_mapsize(t_map *map);
 void	ft_mapadd_back(t_map **map, t_map *new);
 void	input_map(t_map **map, char **argv);
-//void	print_map(t_map *map);
+// void	print_map(t_map *map);
 //move
 int		input_key(int keycode, t_base *data);
 //asset

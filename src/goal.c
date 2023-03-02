@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 14:47:05 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/03/02 15:36:36 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/03/02 21:53:11 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,6 @@ static void	backtracking(t_map *map, int i)
 	if ((map->prev->row[i] == '1') && (map->row[i + 1] == '1')
 		&& (map->row[i - 1] == '1') && (map->next->row[i] == '1'))
 		return ;
-	if (map->row[i + 1] != '1')
-	{
-		map->row[i + 1] = '1';
-		backtracking(map, i + 1);
-	}
-	if (map->row[i - 1] != '1')
-	{
-		map->row[i - 1] = '1';
-		backtracking(map, i - 1);
-	}
 	if (map->next->row[i] != '1')
 	{
 		map->next->row[i] = '1';
@@ -54,6 +44,16 @@ static void	backtracking(t_map *map, int i)
 	{
 		map->prev->row[i] = '1';
 		backtracking(map->prev, i);
+	}
+	if (map->row[i + 1] != '1')
+	{
+		map->row[i + 1] = '1';
+		backtracking(map, i + 1);
+	}
+	if (map->row[i - 1] != '1')
+	{
+		map->row[i - 1] = '1';
+		backtracking(map, i - 1);
 	}
 }
 
@@ -98,6 +98,6 @@ void	able_to_goal(t_base *data)
 		dup = dup->next;
 	}
 	backtracking(dup, data->index.x);
-	dup_contain(data, head, "01PE\n");
+	dup_contain(data, head, "01\n");
 	ft_free_map(head);
 }
