@@ -6,7 +6,7 @@
 #    By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/19 22:19:07 by ihashimo          #+#    #+#              #
-#    Updated: 2023/02/28 09:27:12 by ihashimo         ###   ########.fr        #
+#    Updated: 2023/03/02 20:39:50 by ihashimo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,6 @@ SRC = src/so_long.c \
 	src/free.c \
 	src/init.c \
 	src/rectangle.c \
-	src/mlx.c \
-	src/mlx_image.c \
 	src/main_loop.c
 
 OBJ = $(SRC:.c=.o)

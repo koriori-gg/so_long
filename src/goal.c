@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 14:47:05 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/31 11:18:13 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:36:36 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,11 @@ static void	dup_contain(t_base *data, t_map *dup, char *chars)
 void	able_to_goal(t_base *data)
 {
 	t_map	*dup;
+	t_map	*head;
 	int		i;
 
 	dup = mapdup(data->map);
+	head = dup;
 	i = 0;
 	while (dup != NULL)
 	{
@@ -96,6 +98,6 @@ void	able_to_goal(t_base *data)
 		dup = dup->next;
 	}
 	backtracking(dup, data->index.x);
-	dup_contain(data, dup, "01PE\n");
-	ft_free_map(dup);
+	dup_contain(data, head, "01PE\n");
+	ft_free_map(head);
 }

@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:19:22 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/02/28 10:05:53 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/03/02 20:39:31 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,6 @@ typedef struct s_map {
 	struct s_map	*prev;
 }				t_map;
 
-typedef struct s_texture {
-	void	*img;
-	char	*path;
-	int		width;
-	int		height;
-}				t_texture;
-
 typedef struct s_index
 {
 	int	x;
@@ -101,22 +94,13 @@ typedef struct s_base {
 	t_map		*map;
 	int			map_height;
 	int			map_width;
-	t_texture	player[4][3];
-	t_texture	tile[5];
+	void		*player_img[4][2];
+	void		*tile_img[5];
 	int			img_height;
 	int			img_width;
 	int			dir_now;
 	t_count		counts;
 }				t_base;
-//mlx
-void	ft_mlx_key_hook(t_base *data);
-void	ft_mlx_hook(t_base *data);
-void	ft_mlx_loop_hook(t_base *data);
-void	ft_mlx_loop(t_base *data);
-void	ft_mlx_destroy_window(t_base *data);
-//mlx_image
-void	ft_mlx_put_image_to_window(t_base *data,
-			void *img, int width, int height);
 //init
 void	init_struct(t_base *data, char **argv);
 //main_loop
@@ -136,7 +120,7 @@ void	init_index(t_base *data);
 //draw
 void	draw_map(t_base *data);
 //valid
-void	isvalid_map(t_base *data);
+void	check_valid_map(t_base *data);
 //step
 void	print_step(t_count *counts);
 //valid_file
@@ -157,5 +141,5 @@ void	move_down(t_map *map, t_index *index, t_count *counts);
 void	move_left(t_map *map, t_index *index, t_count *counts);
 void	move_right(t_map *map, t_index *index, t_count *counts);
 //rectangle
-void	isrectangle(t_base *data);
+void	check_rectangle(t_base *data);
 #endif

@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 16:59:38 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/02/28 10:02:50 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/03/02 12:28:52 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	init_struct(t_base *data, char **argv)
 	init_count(&data->counts);
 	input_map(&data->map, argv);
 	init_index(data);
-	isvalid_map(data);
 	init_asset(data);
+	check_valid_map(data);
 	init_window(data);
 }

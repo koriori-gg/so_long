@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:17:14 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/02/28 08:40:27 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:58:18 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,17 @@ static void	*ft_xpm_to_image(t_base *data, char *str)
 
 void	init_asset(t_base *data)
 {
-	data->player[DIR_DOWN][0].img = ft_xpm_to_image(data, "player_front.xpm");
-	data->player[DIR_DOWN][1].img = ft_xpm_to_image(data, "player_front1.xpm");
-	data->player[DIR_UP][0].img = ft_xpm_to_image(data, "player_back.xpm");
-	data->player[DIR_UP][1].img = ft_xpm_to_image(data, "player_back1.xpm");
-	data->player[DIR_RIGHT][0].img = ft_xpm_to_image(data, "player_right.xpm");
-	data->player[DIR_RIGHT][1].img = ft_xpm_to_image(data, "player_right1.xpm");
-	data->player[DIR_LEFT][0].img = ft_xpm_to_image(data, "player_left.xpm");
-	data->player[DIR_LEFT][1].img = ft_xpm_to_image(data, "player_left1.xpm");
-	data->tile[0].img = ft_xpm_to_image(data, "zero.xpm");
-	data->tile[1].img = ft_xpm_to_image(data, "one.xpm");
-	data->tile[2].img = ft_xpm_to_image(data, "collect.xpm");
-	data->tile[3].img = ft_xpm_to_image(data, "exit_before.xpm");
-	data->tile[4].img = ft_xpm_to_image(data, "exit_after.xpm");
+	data->player_img[DIR_DOWN][0] = ft_xpm_to_image(data, "player_front.xpm");
+	data->player_img[DIR_DOWN][1] = ft_xpm_to_image(data, "player_front1.xpm");
+	data->player_img[DIR_UP][0] = ft_xpm_to_image(data, "player_back.xpm");
+	data->player_img[DIR_UP][1] = ft_xpm_to_image(data, "player_back1.xpm");
+	data->player_img[DIR_RIGHT][0] = ft_xpm_to_image(data, "player_right.xpm");
+	data->player_img[DIR_RIGHT][1] = ft_xpm_to_image(data, "player_right1.xpm");
+	data->player_img[DIR_LEFT][0] = ft_xpm_to_image(data, "player_left.xpm");
+	data->player_img[DIR_LEFT][1] = ft_xpm_to_image(data, "player_left1.xpm");
+	data->tile_img[0] = ft_xpm_to_image(data, "zero.xpm");
+	data->tile_img[1] = ft_xpm_to_image(data, "one.xpm");
+	data->tile_img[2] = ft_xpm_to_image(data, "collect.xpm");
+	data->tile_img[3] = ft_xpm_to_image(data, "exit_before.xpm");
+	data->tile_img[4] = ft_xpm_to_image(data, "exit_after.xpm");
 }

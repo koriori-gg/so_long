@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 20:32:24 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/02/28 09:19:37 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/03/02 20:18:43 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	close_game(t_base *data)
 {
-	ft_mlx_destroy_window(data);
+	mlx_destroy_window(data->mlx, data->win);
 	ft_free_data(data);
 	exit(0);
 }
 
 void	end_game(t_base *data)
 {
-	ft_mlx_destroy_window(data);
+	mlx_destroy_window(data->mlx, data->win);
 	ft_free_data(data);
 	exit(0);
 }
@@ -31,15 +31,15 @@ void	error_free(t_base *data, int signal)
 	ft_free_data(data);
 	ft_printf("Error\n");
 	if (signal == MINIMUM_ERROR)
-		ft_printf("The map must contain ECSP\n");
+		ft_printf("The map must contain ECP\n");
 	if (signal == UNNESSESARY_ERROR)
-		ft_printf("The map contains except ECSP\n");
+		ft_printf("The map contains except ECP\n");
 	if (signal == SURROUND_ERROR)
 		ft_printf("The map must be surrounded by walls\n");
 	if (signal == RECTANGLE_ERROR)
 		ft_printf("The map must be rectangle\n");
 	if (signal == UNABLETOGOAL_ERROR)
-		ft_printf("The map must be rectangle\n");
+		ft_printf("The map not be able to goal\n");
 	if (signal == IMAGE_ERROR)
 		ft_printf("Images loading error\n");
 	if (signal == MLX_ERROR)

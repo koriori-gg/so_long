@@ -6,19 +6,19 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:04:33 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/02/28 10:04:34 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/03/02 12:27:08 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	iscomplete(t_count *counts)
+static void	toggle_if_needed(t_count *counts)
 {
 	if (counts->collect == counts->current)
 		counts->status = COMPLETE;
 }
 
-static void	isgoal(t_base *data)
+static void	end_if_goal(t_base *data)
 {
 	if (data->counts.play == FINISH)
 		end_game(data);
@@ -26,8 +26,8 @@ static void	isgoal(t_base *data)
 
 int	main_loop(t_base *data)
 {
-	iscomplete(&data->counts);
+	toggle_if_needed(&data->counts);
 	draw_map(data);
-	isgoal(data);
+	end_if_goal(data);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 14:47:15 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/31 10:43:24 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:45:43 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static void	contains_unnecessary(t_base *data, char *chars)
 	}
 }
 
-static void	issurrounded(t_base *data)
+static void	check_surrounded(t_base *data)
 {
 	t_map	*map;
 	int		i;
@@ -99,11 +99,11 @@ static void	issurrounded(t_base *data)
 	}
 }
 
-void	isvalid_map(t_base *data)
+void	check_valid_map(t_base *data)
 {
-	isrectangle(data);
+	check_rectangle(data);
 	contains_char(data);
 	contains_unnecessary(data, "01CEP\n");
-	issurrounded(data);
+	check_surrounded(data);
 	able_to_goal(data);
 }
