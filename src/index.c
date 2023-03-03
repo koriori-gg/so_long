@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:17:11 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/31 11:50:31 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/03/03 14:45:28 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ static void	get_index(t_map *map, t_index *index)
 
 void	init_index(t_base *data)
 {
-	if (!data->map)
-		error(NOTHING_ERROR);
 	get_index(data->map, &data->index);
 	data->map_height = ft_mapsize(data->map);
 	data->map_width = ft_strlen(data->map->row) - 1;

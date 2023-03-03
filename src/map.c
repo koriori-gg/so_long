@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 22:18:50 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/03/02 21:56:04 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/03/03 14:45:05 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ void	input_map(t_map **map, char **argv)
 		str = get_next_line(fd);
 		if (!str)
 		{
+			if (i == 1)
+				error(NOTHING_ERROR);
 			free(str);
 			break ;
 		}
